@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<div id="menuData"></div>
+		<script>
+		fetch('/api/menu')
+		    .then(response => response.json())
+		    .then(dataArray => {
+		        const menuElement = document.getElementById('menuData');
+		        dataArray.forEach(data => {
+		            menuElement.innerHTML += `
+		                <div class="menuItem">
+		                    <p>Nombre: ${data.nombre}</p>
+		                    <p>Apellido: ${data.apellido}</p>
+		                    <p>Email: ${data.email}</p>
+		                    <p>Password: ${data.password}</p>
+		                </div>
+		            `;
+		        });
+		    })
+		    .catch(error => console.error('Error:', error));
+		</script>
+
+		
+</body>
+</html>
